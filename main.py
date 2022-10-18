@@ -16,7 +16,6 @@ try:
   except:
     print("Date needs to be an integer")
 
-
     
  #Allows me to combine year, date and month in a sequence to later use.
   
