@@ -14,7 +14,7 @@ try:
     month = int(input('Enter a month: '))
     day = int(input('Enter a day: '))
   except:
-    print("Date needs to be a number")
+    print("Date needs to be an integer")
 
 
     
@@ -70,4 +70,4 @@ try:
     print("Something went wrong")
   
 except: 
-  print("Something else also went wrong")
+  print("Something else went wrong")
