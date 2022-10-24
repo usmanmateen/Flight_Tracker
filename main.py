@@ -44,9 +44,10 @@ try:
     # get response 
     "GET", urlFinal, headers=headers, params=querystring)
   
-  
   #following are the variables which exact respective data from JSON.
   try:
+   
+
     airline = response.json()[0]["airline"]["name"]
   
     departure = response.json()[0]["departure"]["airport"]["name"]
