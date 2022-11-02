@@ -68,3 +68,9 @@ def re_get():
     with open('flight.jpg','wb') as f:
      f.write(r.content)
 pass
+
+
+
+
+arrival_weather(x[0]["arrival"]["airport"]["name"])
+print(departure_weather(x[0]["departure"]["airport"]["name"]))

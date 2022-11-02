@@ -281,6 +281,20 @@ optional = false
 python-versions = ">=3.6"
 
 [[package]]
+name = "pyjwt"
+version = "2.6.0"
+description = "JSON Web Token implementation in Python"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+crypto = ["cryptography (>=3.4.0)"]
+dev = ["sphinx (>=4.5.0,<5.0.0)", "sphinx-rtd-theme", "zope.interface", "cryptography (>=3.4.0)", "pytest (>=6.0.0,<7.0.0)", "coverage[toml] (==5.0.4)", "pre-commit"]
+docs = ["sphinx (>=4.5.0,<5.0.0)", "sphinx-rtd-theme", "zope.interface"]
+tests = ["pytest (>=6.0.0,<7.0.0)", "coverage[toml] (==5.0.4)"]
+
+[[package]]
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
@@ -333,6 +347,14 @@ validation = ["pydantic (>=1.7.4)"]
 global = ["appdirs (>=1.4.4)"]
 gen_docs = ["pytoolconfig", "sphinx-rtd-theme (>=1.0.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx (>=4.5.0)"]
 doc = ["sphinx (>=4.5.0)", "tabulate (>=0.8.9)"]
+
+[[package]]
+name = "pytz"
+version = "2022.5"
+description = "World timezone definitions, modern and historical"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "replit"
@@ -432,6 +454,19 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "twilio"
+version = "7.15.0"
+description = "Twilio API client and TwiML generator"
+category = "main"
+optional = false
+python-versions = ">=3.6.0"
+
+[package.dependencies]
+PyJWT = ">=2.0.0,<3.0.0"
+pytz = "*"
+requests = ">=2.0.0"
+
+[[package]]
 name = "typing-extensions"
 version = "3.10.0.2"
 description = "Backported and Experimental Type Hints for Python 3.5+"
@@ -517,7 +552,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.0,<3.9"
-content-hash = "3176f7e2e7c10102dccfde3b2c28db75352aec7312cf5b51416c7178b46706a5"
+content-hash = "1c9feba7ccb5663fe7de83614e41ca4e3e0914d8403ca8bc44ec098ce4eb0b2c"
 
 [metadata.files]
 aiohttp = []
@@ -545,16 +580,19 @@ packaging = []
 parso = []
 pluggy = []
 pyflakes = []
+pyjwt = []
 pyparsing = []
 python-dotenv = []
 python-lsp-jsonrpc = []
 pytoolconfig = []
+pytz = []
 replit = []
 replit-python-lsp-server = []
 requests = []
 rope = []
 toml = []
 tomli = []
+twilio = []
 typing-extensions = []
 ujson = []
 urllib3 = []

@@ -4,9 +4,12 @@ import os
 from dotenv import load_dotenv
 import requests
 from datetime import date, datetime
+from twilio.rest import Client 
 
+  
 try:
   load_dotenv('key.env')
+
   #Allows me to get user input.
   flight = input("what is the flight number: ")
   try:
@@ -46,7 +49,6 @@ try:
   
   #following are the variables which exact respective data from JSON.
   try:
-   
 
     airline = response.json()[0]["airline"]["name"]
   
@@ -61,13 +63,29 @@ try:
      f.write(r.content)
     
   
-    print("This is a "+airline+" flight.")
+    print("This is a "+ airline +" flight.")
   
     print("Flying from  " + departure )
   
     print("To  " + arrival)
   except:
     print("Something went wrong")
-  
+
+
 except: 
   print("Something else went wrong")
+
+
+
+  
+account_sid = 'ACd34af5eac16e272e32fa284bcbe73c37'
+auth_token = '72932a801079083300e1f203c2fdf910'
+client = Client(account_sid, auth_token) 
+     
+message = client.messages.create( 
+          from_='whatsapp:+14155238886',  
+          body = "what is the flight number: " ,  
+          to ='whatsapp:+447469504601' 
+                              ) 
+     
+print(message.sid)
