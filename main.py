@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 import requests
 from datetime import date, datetime
 from twilio.rest import Client 
-
+import folium
   
 try:
   load_dotenv('key.env')
@@ -55,7 +55,7 @@ try:
     departure = response.json()[0]["departure"]["airport"]["name"]
   
     arrival = response.json()[0]["arrival"]["airport"]["name"]
-  
+
     image = response.json()[0]["aircraft"]["image"]["url"]
   #download image
     r = requests.get(image)
