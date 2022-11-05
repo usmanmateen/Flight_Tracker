@@ -107,9 +107,24 @@ def arrival_weather(city="london"):
 
   response = requests.request("GET", weather_api, headers=headers, params=querystring)
 
-  print(response.json())
+  weather_C= response.json()["current"]["temp_c"]
 
+  sky_state = response.json()["current"]["condition"]["text"]
+  try:
+    visibility = response.json()["current"]["condition"]["vis_miles"]
+  except:
+    print("")
 
+  print("Current temperature in " + city +" is " +str(round(weather_C))+"°C")
+  print("Sky is "+sky_state)
+  try:
+    print(visibility)
+  except:
+    print("")
+  
+  return response.json()
+
+  
 
 arrival_weather(x[0]["arrival"]["airport"]["name"])
 
