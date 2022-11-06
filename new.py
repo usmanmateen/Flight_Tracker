@@ -3,6 +3,9 @@ from dotenv import load_dotenv
 import requests
 from datetime import date, datetime
 from twilio.rest import Client
+
+
+
 load_dotenv('key.env')
 def convert(date_str):
   format = "%Y/%m/%d"  # Date will in from day/month/year
@@ -93,6 +96,40 @@ x = flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
 
 time = x[0]["departure"]["scheduledTimeLocal"]
 
+
+
+def departure_weather(city="london"):
+  
+  weather_api = "https://weatherapi-com.p.rapidapi.com/current.json"
+  
+  querystring = {"q":city}
+
+  headers = {
+	"X-RapidAPI-Key": os.getenv('weatherAPI'),
+	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
+}
+
+  response = requests.request("GET", weather_api, headers=headers, params=querystring)
+
+  weather_C= response.json()["current"]["temp_c"]
+
+  sky_state = response.json()["current"]["condition"]["text"]
+  try:
+    visibility = response.json()["current"]["condition"]["vis_miles"]
+  except:
+    print("")
+
+  print("Current temperature in " + city +" is " +str(round(weather_C))+"°C")
+  print("Sky is "+sky_state)
+  try:
+    print(visibility)
+  except:
+    print("")
+
+departure_weather(x[0]["departure"]["airport"]["name"])
+
+
+
 def arrival_weather(city="london"):
   
   
@@ -130,40 +167,31 @@ arrival_weather(x[0]["arrival"]["airport"]["name"])
 
 
 
-def departure_weather(city="london"):
-  
-  weather_api = "https://weatherapi-com.p.rapidapi.com/current.json"
-  
-  querystring = {"q":city}
-
-  headers = {
-	"X-RapidAPI-Key": os.getenv('weatherAPI'),
-	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
-}
-
-  response = requests.request("GET", weather_api, headers=headers, params=querystring)
-
-  print(response.json())
-
-departure_weather(x[0]["departure"]["airport"]["name"])
 
 
-
-
-def message(time="00:00"):
+def message(time="00:00",flight_insight=x):
    
   account_sid = os.getenv('account_SID') 
   auth_token = os.getenv('Auth')  
   client = Client(account_sid, auth_token) 
   number = str(input("number?"))
+  airline = str(x[0]["airline"]["name"])
+  departure = str(x[0]["departure"]["airport"]["name"])
+  arrival = str(x[0]["arrival"]["airport"]["name"])
+  time = str(x[0]["departure"]["scheduledTimeLocal"])
+
+  
+
+
+
 
   
   message = client.messages.create( 
                                 from_='+16208378159',  
-                                body= 'your flight with be leaving at '+time,      
+                                body= "This is a "+ airline +" flight✈️." + " Flying from  " +   departure +"🛫." +" To  " + arrival + "🛩️." + " ⏳Departue time is " + time,      
                                 to= number 
                             ) 
    
   print(message.sid)
 
-message(x[0]["departure"]["scheduledTimeLocal"])
+message(x[0]["departure"]["scheduledTimeLocal"],x[0])
