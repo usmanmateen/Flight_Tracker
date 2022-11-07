@@ -105,8 +105,8 @@ def map(lat,lon="0.00,0.00"):
   
 
   endpoint = 'https://maps.googleapis.com/maps/api/staticmap?center='
-  map_size = '&zoom=6&size=400x400&markers=color:blue%7Clabel:S%7C'
-  marker = '&markers=size:mid%7Ccolor:0xFFFF00%7C&key='
+  map_size = '&zoom=6&size=400x400&markers=color:red%7Clabel:O%7C'
+  marker = '&markers=size:mid%7Ccolor:0xFF0000%7C&key='
   API =  os.getenv('maps')
   image_url = endpoint + lat+','+lon + map_size + lat+','+lon + marker + API
 
