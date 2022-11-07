@@ -5,7 +5,6 @@ from datetime import date, datetime
 from twilio.rest import Client
 
 
-
 load_dotenv('key.env')
 def convert(date_str):
   format = "%Y/%m/%d"  # Date will in from day/month/year
@@ -95,6 +94,32 @@ x = flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
 
 time = x[0]["departure"]["scheduledTimeLocal"]
 
+
+def map(lat,lon="0.00,0.00"):
+  list_location = list(x[0]["location"].values())
+  
+  lat = str(list_location[4])
+  
+  lon = str(list_location[5])
+    
+  
+
+  endpoint = 'https://maps.googleapis.com/maps/api/staticmap?center='
+  map_size = '&zoom=6&size=400x400&markers=color:blue%7Clabel:S%7C'
+  marker = '&markers=size:mid%7Ccolor:0xFFFF00%7C&key='
+  API =  os.getenv('maps')
+  image_url = endpoint + lat+','+lon + map_size + lat+','+lon + marker + API
+
+  r = requests.get(image_url)
+  with open('flight_map.jpg','wb') as f:
+    f.write(r.content)
+  print(image_url)
+map(x[0]["location"])
+
+
+
+
+#https://maps.googleapis.com/maps/api/staticmap?center=52.47159, -1.76778&zoom=6&size=400x400&markers=color:blue%7Clabel:S%7C52.47159, -1.76778&markers=size:mid%7Ccolor:0xFFFF00%7Clabel:C%7CTok,AK%22&key=AIzaSyBJM6palbsErzflk8nXqV4wWQdH_Zdg5_E'
 
 
 def departure_weather(city="london"):
@@ -200,5 +225,6 @@ def message(time="00:00",flight_insight=x):
                             ) 
    
   print(message.sid)
-
+pass
 message(x[0]["departure"]["scheduledTimeLocal"],x[0])
+
