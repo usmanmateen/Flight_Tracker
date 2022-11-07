@@ -225,6 +225,6 @@ def message(time="00:00",flight_insight=x):
                             ) 
    
   print(message.sid)
-pass
+
 message(x[0]["departure"]["scheduledTimeLocal"],x[0])
 
