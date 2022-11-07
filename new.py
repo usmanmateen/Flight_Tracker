@@ -50,8 +50,7 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
 
     time = response.json()[0]["departure"]["scheduledTimeLocal"]
 
-  
-  
+
     image = response.json()[0]["aircraft"]["image"]["url"]
 
     try:
@@ -167,29 +166,37 @@ arrival_weather(x[0]["arrival"]["airport"]["name"])
 
 
 
-
+def number_check(number='+447196325410'):
+  number = str(input("number?"))
+  if number.startswith('+') == True:
+    return number
+  elif number.startswith('07') == True:
+    list_num = list(number)
+    num = ''.join(list_num[1:11])
+    number = str("+44"+num)
+    return number
+  else:
+    list_num = list(number)
+    num = ''.join(list_num[2:14])
+    number = str("+"+num)
+    return number
+    
 
 def message(time="00:00",flight_insight=x):
    
   account_sid = os.getenv('account_SID') 
   auth_token = os.getenv('Auth')  
   client = Client(account_sid, auth_token) 
-  number = str(input("number?"))
+  
   airline = str(x[0]["airline"]["name"])
   departure = str(x[0]["departure"]["airport"]["name"])
   arrival = str(x[0]["arrival"]["airport"]["name"])
   time = str(x[0]["departure"]["scheduledTimeLocal"])
-
-  
-
-
-
-
   
   message = client.messages.create( 
                                 from_='+16208378159',  
                                 body= "This is a "+ airline +" flight✈️." + " Flying from  " +   departure +"🛫." +" To  " + arrival + "🛩️." + " ⏳Departue time is " + time,      
-                                to= number 
+                                to= number_check(),
                             ) 
    
   print(message.sid)

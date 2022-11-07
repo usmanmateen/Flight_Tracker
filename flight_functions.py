@@ -25,7 +25,7 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
     }
 
     try:
-        request = web_request(url,headers,querystring)
+        request = web_request(url,headers=headers,querystring)
         if type(request) is bool: # if False us returned 
             print("Error with Web Request")
             print(request)
