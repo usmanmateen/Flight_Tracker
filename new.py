@@ -96,24 +96,27 @@ time = x[0]["departure"]["scheduledTimeLocal"]
 
 
 def map(lat,lon="0.00,0.00"):
-  list_location = list(x[0]["location"].values())
+  try:
+    list_location = list(x[0]["location"].values())
   
-  lat = str(list_location[4])
+    lat = str(list_location[4])
   
-  lon = str(list_location[5])
+    lon = str(list_location[5])
     
   
 
-  endpoint = 'https://maps.googleapis.com/maps/api/staticmap?center='
-  map_size = '&zoom=6&size=400x400&markers=color:red%7Clabel:O%7C'
-  marker = '&markers=size:mid%7Ccolor:0xFF0000%7C&key='
-  API =  os.getenv('maps')
-  image_url = endpoint + lat+','+lon + map_size + lat+','+lon + marker + API
+    endpoint = 'https://maps.googleapis.com/maps/api/staticmap?center='
+    map_size = '&zoom=7&size=400x400&markers=color:red%7Clabel:O%7C'
+    marker = '&markers=size:mid%7Ccolor:0xFF0000%7C&key='
+    API =  os.getenv('maps')
+    image_url = endpoint + lat+','+lon + map_size + lat+','+lon + marker + API
 
-  r = requests.get(image_url)
-  with open('flight_map.jpg','wb') as f:
-    f.write(r.content)
-  print(image_url)
+    r = requests.get(image_url)
+    with open('flight_map.jpg','wb') as f:
+      f.write(r.content)
+    
+  except:
+    print('')
 map(x[0]["location"])
 
 
