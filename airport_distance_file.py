@@ -1,8 +1,8 @@
 import requests
 
 def airport_code(airport = 'bhx',airport2 = 'lhr'):
-  airport = str(input("3 digits airport code. Example: Bhx for Brirmingham > "))
-  airport2 = str(input('3 digits airport code. Example:  LHR for London > '))
+  airport = str(input("3 digits airport code. Example:  BHX for Brirmingham > "))
+  airport2 = str(input('3 digits airport code. Example: LHR for London > '))
   
   if len(airport) == 3 and len(airport2) == 3:
     return airport, airport2

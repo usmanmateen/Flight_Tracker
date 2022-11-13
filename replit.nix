@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.azure-functions-core-tools
     pkgs.graphicsmagick-imagemagick-compat
     pkgs.python38Full
   ];

@@ -6,15 +6,8 @@ from twilio.rest import Client
 
 
 load_dotenv('key.env')
-def convert(date_str):
-  format = "%Y/%m/%d"  # Date will in from day/month/year
-  return datetime.strftime(date_str, format).date() 
 
-def web_requests():
-  response = requests.request("GET", url, headers=headers, params=querystring)
-  return web_requests() 
-  pass
-
+#Following function returns basic flight statistics with real-time location and aircraft image.
 def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}):
     flight = input("what is the flight number: ")
     year = int(input('Enter a year: '))
@@ -28,7 +21,7 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
       print("Date Error")
       return flight_data()
       
-      
+      #Standard API code for it to work
     api = "https://aerodatabox.p.rapidapi.com/flights/number/"
     url = api + flight +"/"+date1
       
@@ -37,6 +30,7 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
       "X-RapidAPI-Key": os.getenv('flightAPI'),
         "X-RapidAPI-Host": "aerodatabox.p.rapidapi.com"
       }
+        #Standard API code for it to work
   
     response = requests.request("GET", url, headers=headers, params=querystring)
     
@@ -94,7 +88,7 @@ x = flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
 
 time = x[0]["departure"]["scheduledTimeLocal"]
 
-
+# Following fuction returns an image of map with APIs taking latitude and longitude of the aircraft.
 def map(lat,lon="0.00,0.00"):
   try:
     list_location = list(x[0]["location"].values())
@@ -108,7 +102,9 @@ def map(lat,lon="0.00,0.00"):
     endpoint = 'https://maps.googleapis.com/maps/api/staticmap?center='
     map_size = '&zoom=7&size=400x400&markers=color:red%7Clabel:O%7C'
     marker = '&markers=size:mid%7Ccolor:0xFF0000%7C&key='
+    #All API keys are stored in a seperate file called key.env and the following line is extracting that respective map key for this function to work
     API =  os.getenv('maps')
+    
     image_url = endpoint + lat+','+lon + map_size + lat+','+lon + marker + API
 
     r = requests.get(image_url)
@@ -125,11 +121,14 @@ except:
 
 
 
-#https://maps.googleapis.com/maps/api/staticmap?center=52.47159, -1.76778&zoom=6&size=400x400&markers=color:blue%7Clabel:S%7C52.47159, -1.76778&markers=size:mid%7Ccolor:0xFFFF00%7Clabel:C%7CTok,AK%22&key=AIzaSyBJM6palbsErzflk8nXqV4wWQdH_Zdg5_E'
+#Link example for MAP >>>>>>>>    https://maps.googleapis.com/maps/api/staticmap?center=52.47159, -1.76778&zoom=6&size=400x400&markers=color:blue%7Clabel:S%7C52.47159, -1.76778&markers=size:mid%7Ccolor:0xFFFF00%7Clabel:C%7CTok,AK%22&key=AIzaSyBJM6palbsErzflk8nXqV4wWQdH_Zdg5_E'
 
 
+
+#Following function returns departure weather. It takes a city as parameter from the flight function and returns weather
 def departure_weather(city="london"):
-  
+
+  #Standard API code for it to work
   weather_api = "https://weatherapi-com.p.rapidapi.com/current.json"
   
   querystring = {"q":city}
@@ -138,7 +137,7 @@ def departure_weather(city="london"):
 	"X-RapidAPI-Key": os.getenv('weatherAPI'),
 	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
 }
-
+  #Standard API code for it to work
   response = requests.request("GET", weather_api, headers=headers, params=querystring)
 
   weather_C= response.json()["current"]["temp_c"]
@@ -159,10 +158,10 @@ def departure_weather(city="london"):
 departure_weather(x[0]["departure"]["airport"]["name"])
 
 
-
+#Following function returns arrival weather. It takes a city as parameter from the flight function and returns weather
 def arrival_weather(city="london"):
   
-  
+  #Standard API code for it to work
   weather_api = "https://weatherapi-com.p.rapidapi.com/current.json"
   
   querystring = {"q":city}
@@ -171,7 +170,8 @@ def arrival_weather(city="london"):
 	"X-RapidAPI-Key": os.getenv('weatherAPI'),
 	"X-RapidAPI-Host": "weatherapi-com.p.rapidapi.com"
 }
-
+  #Standard API code for it to work
+  
   response = requests.request("GET", weather_api, headers=headers, params=querystring)
 
   weather_C= response.json()["current"]["temp_c"]
@@ -196,7 +196,45 @@ def arrival_weather(city="london"):
 arrival_weather(x[0]["arrival"]["airport"]["name"])
 
 
+#Following function validates IATA airport code and returns false if code is wrong. If it is correct it passes these codes to be used in the next function.
+def airport_code(airport = 'bhx',airport2 = 'lhr'):
+  airport = str(input("3 digits airport code. Example: Bhx for Brirmingham > "))
+  airport2 = str(input('3 digits airport code. Example:  LHR for London > '))
+  
+  if len(airport) == 3 and len(airport2) == 3:
+    return airport, airport2
+    
+  else:
+    return print(False)
 
+
+#Following function takes IATA airport code afrom the previous function and returns estimated travel time between two given airports.
+def airportDistance():
+  
+  list_arpt = list(airport_code())
+  airport = list_arpt[0]
+  airport2 = list_arpt[1]
+
+  #Standard API code for it to work
+  url = 'https://aerodatabox.p.rapidapi.com/airports/iata/'
+
+  urlFinal = url + airport + "/distance-time/"+ airport2
+
+  headers = {
+	  "X-RapidAPI-Key": "7fd9c4ad4fmshd8f66ec397141d0p135583jsnc53fe7e95b0f",
+	  "X-RapidAPI-Host": "aerodatabox.p.rapidapi.com"
+  }
+  #Standard API code for it to work
+  response = requests.request("GET", urlFinal, headers=headers)
+
+  approx = response.json()["approxFlightTime"]
+
+  return print('Estimated flight time from ' +airport + ' to ' + airport2 +' is ' +approx)
+
+airportDistance()
+
+
+#Following function checks a UK number's format and returns the correct format of the number to be used in the next functio to send a message.
 def number_check(number='+447196325410'):
   number = str(input("number?"))
   if number.startswith('+') == True:
@@ -212,18 +250,24 @@ def number_check(number='+447196325410'):
     number = str("+"+num)
     return number
     
-
+#Following function sends a message to the correct format number passed by previous function.
 def message(time="00:00",flight_insight=x):
-   
+
+  
+   #Standard API code for it to work
   account_sid = os.getenv('account_SID') 
   auth_token = os.getenv('Auth')  
   client = Client(account_sid, auth_token) 
+  #Standard API code for it to work
+
   
   airline = str(x[0]["airline"]["name"])
   departure = str(x[0]["departure"]["airport"]["name"])
   arrival = str(x[0]["arrival"]["airport"]["name"])
   time = str(x[0]["departure"]["scheduledTimeLocal"])
+
   
+  #Standard API code for it to work
   message = client.messages.create( 
                                 from_='+16208378159',  
                                 body= "This is a "+ airline +" flight✈️." + " Flying from  " +   departure +"🛫." +" To  " + arrival + "🛩️." + " ⏳Departue time is " + time,      
@@ -231,45 +275,13 @@ def message(time="00:00",flight_insight=x):
                             ) 
    
   print(message.sid)
+  #Standard API code for it to work
 
+  
 message(x[0]["departure"]["scheduledTimeLocal"],x[0])
  
 
   
-def airport_code(airport = 'bhx',airport2 = 'lhr'):
-  airport = str(input("3 digits airport code. Example: Bhx for Brirmingham > "))
-  airport2 = str(input('3 digits airport code. Example:  LHR for London > '))
-  
-  if len(airport) == 3 and len(airport2) == 3:
-    return airport, airport2
-    
-  else:
-    return print(False)
 
-
-
-def airportDistance():
-  
-  list_arpt = list(airport_code())
-  airport = list_arpt[0]
-  airport2 = list_arpt[1]
-
-  
-  url = 'https://aerodatabox.p.rapidapi.com/airports/iata/'
-
-  urlFinal = url + airport + "/distance-time/"+ airport2
-
-  headers = {
-	  "X-RapidAPI-Key": "7fd9c4ad4fmshd8f66ec397141d0p135583jsnc53fe7e95b0f",
-	  "X-RapidAPI-Host": "aerodatabox.p.rapidapi.com"
-  }
-
-  response = requests.request("GET", urlFinal, headers=headers)
-
-  approx = response.json()["approxFlightTime"]
-
-  return print('Estimated flight time from ' +airport + ' to ' + airport2 +' is ' +approx)
-
-airportDistance()
   
   
