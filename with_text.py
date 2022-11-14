@@ -7,13 +7,14 @@ smtp_port = 587                 # Standard secure SMTP port
 smtp_server = "smtp.gmail.com"  # Google SMTP Server
 
 email_from = "flightbotdiscord@gmail.com"
-email_to = "usmanmateen255@gmail.com"
+email_to = "tanzeelahmed47@gmail.com"
 
 pswd = "fnnxnxsqkefsxpbr"
 
 # content of message
 
-message = "Dear god, please help!!!"
+message = "Hi Tanzeel,Your latest worten payment was unsuccessful. Your bill for 791.41 is now overdue. Please make this payment as soon as possible using the link below.View your bill online: INV873602 If you have any questions, please don't hesitate to get in touch. Regards,The worten team."
+
 
 # Create context
 simple_email_context = ssl.create_default_context()
