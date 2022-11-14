@@ -1,10 +1,10 @@
 import os
 from dotenv import load_dotenv
 import requests
-from datetime import date, datetime
+from datetime import date, datetime 
 from twilio.rest import Client
 
-
+#Loads key.env file for API keys
 load_dotenv('key.env')
 
 #Following function returns basic flight statistics with real-time location and aircraft image.

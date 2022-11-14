@@ -1,0 +1,101 @@
+2022-11-14 12:53:21.810000+00:00 - Vinay: !test
+2022-11-14 12:48:16.618000+00:00 - Vinay: !test
+2022-11-14 10:10:51.496000+00:00 - Vinay: .
+2022-11-14 10:10:47.325000+00:00 - test-bot: Hello vinstar123
+2022-11-14 10:10:46.979000+00:00 - test-bot: it’s been ages (since i’ve seen you). vinstar123
+2022-11-14 10:10:46.825000+00:00 - Vinay: HELLO
+2022-11-14 09:52:39.108000+00:00 - test-bot: ```Mission Successful;```
+2022-11-14 09:52:34.174000+00:00 - test-bot: Tweeking config file to only allow test2 for this Guild
+2022-11-14 09:52:33.927000+00:00 - test-bot: Found test2 in Guild
+2022-11-14 09:52:33.696000+00:00 - test-bot: ```test channel is already allowed for this Guild```
+2022-11-14 09:52:33.353000+00:00 - test-bot: Tweeking config file to only allow test for this Guild
+2022-11-14 09:52:33.036000+00:00 - test-bot: Found test in Guild
+2022-11-14 09:52:32.816000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-14 09:52:32.640000+00:00 - Vinay: !config test test2
+2022-11-14 09:52:18.019000+00:00 - test-bot: ```Mission Successful;```
+2022-11-14 09:52:17.701000+00:00 - test-bot: ```test channel is already allowed for this Guild```
+2022-11-14 09:52:17.442000+00:00 - test-bot: Tweeking config file to only allow test for this Guild
+2022-11-14 09:52:17.239000+00:00 - test-bot: Found test in Guild
+2022-11-14 09:52:16.935000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-14 09:52:16.765000+00:00 - Vinay: !config test
+2022-11-14 09:51:28.008000+00:00 - test-bot: ```Mission Successful;```
+2022-11-14 09:51:27.810000+00:00 - test-bot: Tweeking config file to only allow test2 for this Guild
+2022-11-14 09:51:23.459000+00:00 - test-bot: Found test2 in Guild
+2022-11-14 09:51:23.284000+00:00 - test-bot: ```test channel is already allowed for this Guild```
+2022-11-14 09:51:23.076000+00:00 - test-bot: Tweeking config file to only allow test for this Guild
+2022-11-14 09:51:22.882000+00:00 - test-bot: Found test in Guild
+2022-11-14 09:51:22.614000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-14 09:51:22.382000+00:00 - Vinay: !config test test2
+2022-11-14 09:51:17.241000+00:00 - test-bot: ```Mission Successful;```
+2022-11-14 09:51:16.997000+00:00 - test-bot: ```test channel is already allowed for this Guild```
+2022-11-14 09:51:16.767000+00:00 - test-bot: Tweeking config file to only allow test for this Guild
+2022-11-14 09:51:16.555000+00:00 - test-bot: Found test in Guild
+2022-11-14 09:51:16.361000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-14 09:51:16.160000+00:00 - Vinay: !config test
+2022-11-14 09:41:24.824000+00:00 - test-bot: 
+2022-11-14 09:41:24.592000+00:00 - Vinay: picture
+2022-11-14 09:40:46.489000+00:00 - Vinay: picture
+2022-11-14 09:40:17.564000+00:00 - Vinay: picture
+2022-11-14 09:39:55.681000+00:00 - test-bot: 
+2022-11-14 09:39:55.435000+00:00 - Vinay: picture
+2022-11-14 09:39:35.170000+00:00 - test-bot: Hello
+2022-11-14 09:39:35.005000+00:00 - Vinay: picture
+2022-11-14 09:39:09.275000+00:00 - Vinay: picture
+2022-11-14 09:39:07.448000+00:00 - test-bot: Hello vinstar123
+2022-11-14 09:39:07.251000+00:00 - test-bot: it’s been ages (since i’ve seen you). vinstar123
+2022-11-14 09:39:07.052000+00:00 - Vinay: hello
+2022-11-14 09:38:49.665000+00:00 - Vinay: picture
+2022-11-14 09:38:30.169000+00:00 - Vinay: picture
+2022-11-14 09:38:27.224000+00:00 - Vinay: message.channel.send
+2022-11-14 09:38:12.021000+00:00 - Vinay: picture
+2022-11-14 09:36:48.558000+00:00 - Vinay: picture
+2022-11-14 09:34:32.328000+00:00 - Vinay: picture
+2022-11-14 09:34:12.853000+00:00 - Vinay: picture
+2022-11-14 09:33:12.351000+00:00 - Vinay: picture
+2022-11-14 09:32:57.146000+00:00 - Vinay: picture
+2022-11-14 09:30:20.121000+00:00 - Vinay: picture
+2022-11-02 22:28:04.655000+00:00 - Vinay: !config test2
+2022-11-02 16:25:06.341000+00:00 - test-bot: Please check the spelling or if the channel exist.
+2022-11-02 16:25:05.939000+00:00 - test-bot: Not found ('extra-test',) in Guild; Please Try Again.
+2022-11-02 16:25:05.664000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-02 16:25:05.274000+00:00 - Vinay: !config extra-test
+2022-11-02 16:24:49.757000+00:00 - test-bot: Tweeking config file to only allow extra-test for this Guild
+2022-11-02 16:24:49.540000+00:00 - test-bot: Found extra-test in Guild
+2022-11-02 16:24:49.290000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-02 16:24:49.037000+00:00 - Vinay: !config extra-test
+2022-11-02 16:24:30.347000+00:00 - test-bot: ```general channel is already allowed for this Guild```
+2022-11-02 16:24:30.126000+00:00 - test-bot: Tweeking config file to only allow general for this Guild
+2022-11-02 16:24:29.827000+00:00 - test-bot: Found general in Guild
+2022-11-02 16:24:29.676000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-02 16:24:29.411000+00:00 - Vinay: !config general
+2022-11-02 16:21:44.867000+00:00 - test-bot: Please check the spelling or if the channel exist.
+2022-11-02 16:21:44.547000+00:00 - test-bot: Not found ('extra-test',) in Guild; Please Try Again.
+2022-11-02 16:21:44.292000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-02 16:21:43.962000+00:00 - Vinay: !config extra-test
+2022-11-02 16:21:03.554000+00:00 - test-bot: ```non-bot-section channel is already allowed for this Guild```
+2022-11-02 16:21:03.334000+00:00 - test-bot: Tweeking config file to only allow non-bot-section for this Guild
+2022-11-02 16:21:03.022000+00:00 - test-bot: Found non-bot-section in Guild
+2022-11-02 16:21:02.728000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-02 16:21:02.502000+00:00 - Vinay: !config non-bot-section
+2022-11-02 16:20:39.274000+00:00 - test-bot: ```general channel is already allowed for this Guild```
+2022-11-02 16:20:39.028000+00:00 - test-bot: Tweeking config file to only allow general for this Guild
+2022-11-02 16:20:38.827000+00:00 - test-bot: Found general in Guild
+2022-11-02 16:20:38.568000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-11-02 16:20:38.327000+00:00 - Vinay: !config general
+2022-10-31 12:50:39.349000+00:00 - Vinay: yes then
+2022-10-31 12:50:36.101000+00:00 - test-bot: ```general channel is already allowed for this Guild```
+2022-10-31 12:50:35.818000+00:00 - test-bot: Tweeking config file to only allow general for this Guild
+2022-10-31 12:50:35.602000+00:00 - test-bot: Found general in Guild
+2022-10-31 12:50:34.924000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-10-31 12:50:34.741000+00:00 - Vinay: !config general
+2022-10-31 12:50:24.570000+00:00 - Vinay: ``` hi ```
+2022-10-31 12:50:07.092000+00:00 - Vinay: 111
+2022-10-31 12:50:02.179000+00:00 - test-bot: '''general channel is already allowed for this Guild'''
+2022-10-31 12:50:01.975000+00:00 - test-bot: Tweeking config file to only allow general for this Guild
+2022-10-31 12:50:01.741000+00:00 - test-bot: Found general in Guild
+2022-10-31 12:50:01.531000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-10-31 12:50:01.349000+00:00 - Vinay: !config general
+2022-10-31 12:49:53.824000+00:00 - test-bot: Please check the spelling or if the channel exist.
+2022-10-31 12:49:53.621000+00:00 - test-bot: Not found ('help',) in Guild; Please Try Again.
+2022-10-31 12:49:53.353000+00:00 - test-bot: Processing Request for Guild 1026568994032984136
+2022-10-31 12:49:53.019000+00:00 - Vinay: !config help
