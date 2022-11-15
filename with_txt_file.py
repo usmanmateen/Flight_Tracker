@@ -8,65 +8,53 @@ import os
 
 
 load_dotenv('key.env')
-# Setup port number and server name
 
-port = 587                 # Standard secure SMTP port
-server = "smtp.gmail.com"  # Google SMTP Server
-
-# Set up the email lists
-bot_email = "flightbotdiscord@gmail.com"
-user_email = str(input('Whats is your email:'))
-
-# Define the password (better to reference externally)
-password = os.getenv('pswd') # As shown in the video this password is now dead, left in as example only
+def send_chat_log():
 
 
-# name the email subject
-subject = "Discord chat log"
+# Set up the email 
+  bot_email = "flightbotdiscord@gmail.com"
+  user_email = str(input('Whats is your email:'))
 
+# Retreive password from key.env
+  password = os.getenv('pswd')
 
+   # Body of the email
+  body = "Hi, a copy of your chat transcript is attached below."
 
-# Define the email function (dont call it email!)
-def send_chat_log(user_email):
-
-   # Make the body of the email
-  body = f"""
-  Hi, a copy of your chat transcript is attached below.
-  """
-
-  # make a MIME object to define parts of the email
+  # MIME object to define email's parts
   message = MIMEMultipart()
-  message['From'] = "Flight Bot"
+  message['From'] = "Flight Bot" #Name of the bot on the email
   message['To'] = user_email
-  message['Subject'] = subject
+  message['Subject'] = "Discord chat log"
 
- # Attach the body of the message
+ # Attach body of the message
   message.attach(MIMEText(body, 'plain'))
 
-  # Define the file to attach
-  filename = "test_log.txt"
+  
+  file_name = "conversation.txt"
 
-   # Open the file in python as a binary
-  attachment= open(filename, 'rb')  # r for read and b for binary
+  #
+  attachment= open(file_name, 'rb') #opens given file in binary.
 
-  # Encode as base 64
+  # encrypt in 64 form.
   attachment_package = MIMEBase('application', 'octet-stream')
   attachment_package.set_payload((attachment).read())
   encoders.encode_base64(attachment_package)
-  attachment_package.add_header('Content-Disposition', "attachment; filename= " + filename)
+  attachment_package.add_header('Content-Disposition', "attachment; file_name= " + file_name)
   message.attach(attachment_package)
 
-   # Cast as string
+   
   text = message.as_string()
 
   # Connect with the server
   try:
-      print("Connecting to server...")
-      gmail_server = smtplib.SMTP(server, port)
+      print("Connecting to server")
+      gmail_server = smtplib.SMTP("smtp.gmail.com", 587)
       gmail_server.starttls()
       gmail_server.login(bot_email, password)
       print("Succesfully connected to server")
-      print()
+     
 
 
       # Send emails to "person" as list is iterated
@@ -82,4 +70,4 @@ def send_chat_log(user_email):
 
 
 # Run the function
-send_chat_log(user_email)
+send_chat_log()

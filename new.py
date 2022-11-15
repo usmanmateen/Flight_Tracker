@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import requests
 from datetime import date, datetime 
 from twilio.rest import Client
+from with_txt_file import send_chat_log
 
 #Loads key.env file for API keys
 load_dotenv('key.env')
