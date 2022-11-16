@@ -4,6 +4,15 @@ import requests
 from datetime import date, datetime 
 from twilio.rest import Client
 from with_txt_file import send_chat_log
+import time 
+
+
+current_time = time.strftime("%H:%M:%S")
+current_time_list = list(current_time)
+time_check = ''.join(current_time_list[0:2])
+
+
+
 
 #Loads key.env file for API keys
 load_dotenv('key.env')
@@ -44,7 +53,12 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
 
     time = response.json()[0]["departure"]["scheduledTimeLocal"]
 
+    time_list= list(time)
+    time_checker = ''.join(time_list[11:13])
+    departure_time= ''.join(time_list[11:16])  
 
+
+    
     image = response.json()[0]["aircraft"]["image"]["url"]
 
     try:
@@ -73,8 +87,13 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
     print("Flying from  " + departure )
   
     print("To  " + arrival)
+
+    if time_checker<time_check:
+      print('Your flight was departed on '+departure_time)
+    else:
+      print('Your flight will depart on '+ departure_time)
+    
   
-    print(time)
     try:
       print(lat_lon)
     except:
@@ -88,6 +107,21 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
 x = flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"})
 
 time = x[0]["departure"]["scheduledTimeLocal"]
+
+
+def departure_time():
+  time_list= list(time)
+  time_checker = ''.join(time_list[11:13])
+  departure_time= ''.join(time_list[11:16]) 
+  
+  if time_checker<time_check:
+    d_time = str('Your flight was departed on '+departure_time)
+    return d_time
+  else:
+    d_time = str('Your flight will depart on '+ departure_time)
+    return d_time
+departure_time()
+
 
 # Following fuction returns an image of map with APIs taking latitude and longitude of the aircraft.
 def map(lat,lon="0.00,0.00"):
@@ -265,13 +299,13 @@ def message(time="00:00",flight_insight=x):
   airline = str(x[0]["airline"]["name"])
   departure = str(x[0]["departure"]["airport"]["name"])
   arrival = str(x[0]["arrival"]["airport"]["name"])
-  time = str(x[0]["departure"]["scheduledTimeLocal"])
+  time = str(departure_time())
 
   
   #Standard API code for it to work
   message = client.messages.create( 
                                 from_='+16208378159',  
-                                body= "This is a "+ airline +" flight✈️." + " Flying from  " +   departure +"🛫." +" To  " + arrival + "🛩️." + " ⏳Departue time is " + time,      
+                                body= "This is a "+ airline +" flight✈️." + " Flying from  " +   departure +"🛫." +" To  " + arrival + "🛩️." + '⏳ ' + time,      
                                 to= number_check(),
                             ) 
    
