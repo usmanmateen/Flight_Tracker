@@ -12,8 +12,6 @@ current_time_list = list(current_time)
 time_check = ''.join(current_time_list[0:2])
 
 
-
-
 #Loads key.env file for API keys
 load_dotenv('key.env')
 
