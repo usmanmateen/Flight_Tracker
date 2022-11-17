@@ -254,7 +254,7 @@ def airportDistance():
   urlFinal = url + airport + "/distance-time/"+ airport2
 
   headers = {
-	  "X-RapidAPI-Key": "7fd9c4ad4fmshd8f66ec397141d0p135583jsnc53fe7e95b0f",
+	  "X-RapidAPI-Key": os.getenv('flightAPI'),
 	  "X-RapidAPI-Host": "aerodatabox.p.rapidapi.com"
   }
   #Standard API code for it to work
