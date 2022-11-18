@@ -8,8 +8,7 @@ import time
 
 
 current_time = time.strftime("%H:%M:%S")
-current_time_list = list(current_time)
-time_check = ''.join(current_time_list[0:2])
+
 
 
 #Loads key.env file for API keys
@@ -49,7 +48,7 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
   
     arrival = response.json()[0]["arrival"]["airport"]["name"]
 
-    time = response.json()[0]["departure"]["scheduledTimeLocal"]
+    time = response.json()[0]["departure"]["scheduledTimeUtc"]
 
     time_list= list(time)
     time_checker = ''.join(time_list[11:13])
@@ -86,12 +85,6 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
   
     print("To  " + arrival)
 
-    if time_checker<time_check:
-      print('Your flight was departed on '+departure_time)
-    else:
-      print('Your flight will depart on '+ departure_time)
-    
-  
     try:
       print(lat_lon)
     except:
@@ -104,15 +97,14 @@ def flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"}
 
 x = flight_data(querystring = {"withAircraftImage":"true","withLocation":"true"})
 
-time = x[0]["departure"]["scheduledTimeLocal"]
+time = x[0]["departure"]["scheduledTimeUtc"]
 
 
 def departure_time():
   time_list= list(time)
-  time_checker = ''.join(time_list[11:13])
   departure_time= ''.join(time_list[11:16]) 
   
-  if time_checker<time_check:
+  if departure_time<current_time:
     d_time = str('Your flight was departed on '+departure_time)
     return d_time
   else:
@@ -130,7 +122,7 @@ def map(lat,lon="0.00,0.00"):
   
     lon = str(list_location[5])
     
-  
+    
 
     endpoint = 'https://maps.googleapis.com/maps/api/staticmap?center='
     map_size = '&zoom=7&size=400x400&markers=color:red%7Clabel:O%7C'
@@ -140,6 +132,8 @@ def map(lat,lon="0.00,0.00"):
     
     image_url = endpoint + lat+','+lon + map_size + lat+','+lon + marker + API
 
+
+    
     r = requests.get(image_url)
     with open('flight_map.jpg','wb') as f:
       f.write(r.content)
@@ -311,7 +305,7 @@ def message(time="00:00",flight_insight=x):
   #Standard API code for it to work
 
   
-message(x[0]["departure"]["scheduledTimeLocal"],x[0])
+message(x[0]["departure"]["scheduledTimeUtc"],x[0])
  
 
   

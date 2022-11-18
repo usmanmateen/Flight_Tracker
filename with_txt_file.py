@@ -31,10 +31,10 @@ def send_chat_log():
  # Attach body of the message
   message.attach(MIMEText(body, 'plain'))
 
-  
+  #identify file
   file_name = "conversation.txt"
 
-  #
+  #code below is some what similar to The Intrigued Engineer in his youtube video.
   attachment= open(file_name, 'rb') #opens given file in binary.
 
   # encrypt in 64 form.
@@ -64,7 +64,7 @@ def send_chat_log():
       print()
   except:
       print("Something went wrong")
-
+  #code above is some what similar to The Intrigued Engineer in his youtube video.
   # Close the port
   gmail_server.quit()
 
