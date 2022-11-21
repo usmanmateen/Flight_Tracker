@@ -12,14 +12,14 @@ load_dotenv('key.env')
 def send_chat_log():
 
 
-# Set up the email 
+# Set up the emails 
   bot_email = "flightbotdiscord@gmail.com"
   user_email = str(input('Whats is your email:'))
 
 # Retreive password from key.env
   password = os.getenv('pswd')
 
-   # Body of the email
+
   body = "Hi, a copy of your chat transcript is attached below."
 
   # MIME object to define email's parts
@@ -34,7 +34,7 @@ def send_chat_log():
   #identify file
   file_name = "conversation.txt"
 
-  #code below is some what similar to The Intrigued Engineer in his youtube video.
+  #code below is some what similar to The Intrigued Engineer in his youtube video https://youtu.be/Sddnn6dpqk0.
   attachment= open(file_name, 'rb') #opens given file in binary.
 
   # encrypt in 64 form.
@@ -64,10 +64,10 @@ def send_chat_log():
       print()
   except:
       print("Something went wrong")
-  #code above is some what similar to The Intrigued Engineer in his youtube video.
-  # Close the port
+  #code above is some what similar to The Intrigued Engineer in his youtube video https://youtu.be/Sddnn6dpqk0.
+  
+  # Close gmail port
   gmail_server.quit()
 
 
-# Run the function
 send_chat_log()
